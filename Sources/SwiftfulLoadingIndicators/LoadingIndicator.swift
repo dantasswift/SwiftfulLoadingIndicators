@@ -13,16 +13,18 @@ public struct LoadingIndicator: View {
     let size: CGFloat
     let speed: Double
     let color: Color
+    let text: String
     
     public init(
         animation: LoadingAnimation = .threeBalls,
         color: Color = .primary,
         size: Size = .medium,
-        speed: Speed = .normal) {
+        speed: Speed = .normal, text: String = "") {
             self.animation = animation
             self.size = size.rawValue
             self.speed = speed.rawValue
             self.color = color
+            self.text = text
     }
     
     public var body: some View {

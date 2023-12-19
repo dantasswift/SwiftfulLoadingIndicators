@@ -10,7 +10,9 @@ import Combine
 
 struct LoadingText: View {
     
-    let items: [String] = "Loading...".map { String($0) }
+    var text: String
+    
+    var items: [String] = []
     
     let timer: Publishers.Autoconnect<Timer.TimerPublisher>
     let timing: Double
@@ -21,16 +23,18 @@ struct LoadingText: View {
     let frame: CGSize
     let primaryColor: Color
     
-    init(color: Color = .black, size: CGFloat = 50, speed: Double = 0.5) {
+    init(color: Color = .black, size: CGFloat = 50, speed: Double = 0.5, text: String) {
         timing = speed / 4
         timer = Timer.publish(every: timing, on: .main, in: .common).autoconnect()
         frame = CGSize(width: size, height: size)
         primaryColor = color
+        self.text = text
+        items = text.map { String($0) }
     }
     
     var body: some View {
         HStack(spacing: 0) {
-            ForEach(items.indices) { index in
+            ForEach(items.indices, id: \.self) { index in
                 Text(items[index])
                     .foregroundColor(primaryColor)
                     .font(.system(size: frame.height / 3, weight: .semibold, design: .default))
