@@ -48,7 +48,7 @@ public struct LoadingIndicator: View {
         case .doubleHelix: LoadingDoubleHelix(color: color, size: size, speed: speed)
         case .bar: LoadingBar(color: color, size: size, speed: speed)
         case .barStripes: LoadingBarStripes(color: color, size: size, speed: speed)
-        case .text: LoadingText(color: color, size: size, speed: speed)
+        case .text: LoadingText(color: color, size: size, speed: speed, text: text)
         case .heart: LoadingHeart(color: color, size: size, speed: speed)
         }
     }
